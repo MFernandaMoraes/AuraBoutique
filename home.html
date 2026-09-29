@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Boutique · Moda Exclusiva por Estilo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+
+      <a href="#" class="brand" aria-label="Aura Boutique">
+        <span class="brand-mark">◈</span>
+        <span class="brand-name">AURA<em>.</em></span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Navegação principal">
+        <a href="#" class="nav-link" data-nav="vitrine">Vitrine</a>
+        <a href="#" class="nav-link" data-nav="produtos">Produtos</a>
+        <a href="#" class="nav-link" data-nav="colecoes">Coleções</a>
+        <a href="#" class="nav-link" data-nav="estilos">Estilos</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="btnSearch" aria-label="Buscar">
+          <i class="fas fa-magnifying-glass"></i>
+        </button>
+        <button class="icon-btn" id="btnLogin" aria-label="Entrar">
+          <i class="fas fa-user"></i>
+        </button>
+        <button class="icon-btn cart-btn" id="btnCart" aria-label="Sacola">
+          <i class="fas fa-bag-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <a href="login.html" class="btn-login" id="btnLoginText">LOGIN</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- BANNER HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <span class="hero-label">DROP 03 · PRIMAVERA 2026</span>
+        <h1 class="hero-title">
+          AURA<br>
+          <span class="hero-title-outline">BOUTIQUE</span>
+        </h1>
+        <p class="hero-desc">
+          Curadoria de moda autoral por estilo. Peças exclusivas, alfaiataria
+          minimalista e estética contemporânea em uma única vitrine.
+        </p>
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary" data-nav="vitrine">
+            VER VITRINE <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#" class="btn btn-ghost" data-nav="colecoes">
+            EXPLORAR COLEÇÃO
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-wrap">
+          <img
+            src="https://i.pinimg.com/736x/d8/32/72/d832725c8903537d1f7b756a173c2475.jpg"
+            alt="Editorial de moda Aura Boutique"
+            id="heroImg">
+          <div class="hero-image-fallback" id="heroFallback">
+            <span>◈</span>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <span>EST. 2026</span>
+          <span>◈</span>
+          <span>SÃO PAULO · BR</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CATEGORIAS -->
+  <section class="section" id="categorias">
+    <div class="section-head">
+      <h2 class="section-title">CATEGORIAS</h2>
+      <a href="#" class="section-link" data-nav="produtos">
+        Ver tudo <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="cat-grid">
+      <a href="#" class="cat-card" data-nav="produtos" data-cat="vestidos">
+        <span class="cat-index">01</span>
+        <span class="cat-name">VESTIDOS</span>
+        <span class="cat-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+      </a>
+      <a href="#" class="cat-card" data-nav="produtos" data-cat="alfaiataria">
+        <span class="cat-index">02</span>
+        <span class="cat-name">ALFAIATARIA</span>
+        <span class="cat-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+      </a>
+      <a href="#" class="cat-card" data-nav="produtos" data-cat="casacos">
+        <span class="cat-index">03</span>
+        <span class="cat-name">CASACOS</span>
+        <span class="cat-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+      </a>
+      <a href="#" class="cat-card" data-nav="produtos" data-cat="acessorios">
+        <span class="cat-index">04</span>
+        <span class="cat-name">ACESSÓRIOS</span>
+        <span class="cat-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- DESTAQUES / VITRINE -->
+  <section class="section" id="vitrine">
+    <div class="section-head">
+      <h2 class="section-title">DESTAQUES</h2>
+      <a href="#" class="section-link" data-nav="vitrine">
+        Ver vitrine completa <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- Preenchido via JS -->
+    </div>
+  </section>
+
+  <!-- EDITORIAL / BANNER SECUNDÁRIO -->
+  <section class="editorial">
+    <div class="editorial-inner">
+      <div class="editorial-text">
+        <span class="editorial-label">EDITORIAL · 001</span>
+        <h3>Estilo é<br><em>identidade</em>.</h3>
+        <p>
+          Cada peça é selecionada por afinidade estética. Descubra a curadoria
+          que conversa com o seu jeito de vestir.
+        </p>
+        <a href="#" class="btn btn-primary" data-nav="estilos">
+          DESCOBRIR MEU ESTILO <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="editorial-image">
+        <img
+          src="https://i.pinimg.com/736x/8d/90/f8/8d90f8aca9ddef09adb562114326e595.jpg"
+          alt="Editorial Aura Boutique"
+          onerror="this.style.display='none'; this.parentNode.classList.add('is-empty');">
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <h3>RECEBA OS PRÓXIMOS DROPS</h3>
+      <p>Antes de todo mundo. Sem spam, só moda.</p>
+      <form class="news-form" id="newsForm">
+        <input type="email" placeholder="SEU E-MAIL" required id="newsEmail">
+        <button type="submit" class="btn btn-primary">
+          INSCREVER <i class="fas fa-arrow-right"></i>
+        </button>
+      </form>
+      <span class="news-msg" id="newsMsg"></span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <span class="brand-mark">◈</span>
+        <span class="brand-name">AURA<em>.</em></span>
+        <p>Moda autoral por estilo. Curadoria exclusiva desde 2026.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>LOJA</h4>
+        <a href="#" data-nav="vitrine">Vitrine</a>
+        <a href="#" data-nav="produtos">Produtos</a>
+        <a href="#" data-nav="colecoes">Coleções</a>
+        <a href="#" data-nav="estilos">Estilos</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>CONTA</h4>
+        <a href="#" id="footerLogin">Login</a>
+        <a href="#" id="footerRegister">Criar conta</a>
+        <a href="#" id="footerOrders">Meus pedidos</a>
+        <a href="#" id="footerHelp">Ajuda</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>SOCIAL</h4>
+        <a href="#" data-social="instagram">Instagram</a>
+        <a href="#" data-social="tiktok">TikTok</a>
+        <a href="#" data-social="pinterest">Pinterest</a>
+        <a href="#" data-social="whatsapp">WhatsApp</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 AURA BOUTIQUE · TODOS OS DIREITOS RESERVADOS</span>
+      <span>BRASIL · PT-BR</span>
+    </div>
+  </footer>
+
+  <!-- MENU MOBILE -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Fechar menu">
+      <i class="fas fa-xmark"></i>
+    </button>
+    <nav class="mobile-nav">
+      <a href="#" data-nav="vitrine">Vitrine</a>
+      <a href="#" data-nav="produtos">Produtos</a>
+      <a href="#" data-nav="colecoes">Coleções</a>
+      <a href="#" data-nav="estilos">Estilos</a>
+      <a href="#" id="mobileLogin">Login</a>
+    </nav>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <script src="js/home.js"></script>
+</body>
+</html>

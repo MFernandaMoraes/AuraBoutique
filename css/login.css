@@ -1,0 +1,448 @@
+/* =========================================================
+   STYLEMATCH · LOGIN
+   Visual Y2K — preto / cinza / branco
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ---------- RESET E VARIÁVEIS ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #0a0a0a;
+  --ink: #141414;
+  --coal: #1e1e1e;
+  --graphite: #2b2b2b;
+  --steel: #6b6b6b;
+  --ash: #a3a3a3;
+  --silver: #d4d4d4;
+  --smoke: #e8e8e8;
+  --paper: #f4f4f4;
+  --white: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.22);
+
+  --font-display: 'Archivo Black', sans-serif;
+  --font-grotesk: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  min-height: 100dvh;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+::selection {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.container {
+  width: 100%;
+  max-width: 460px;
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 48px 40px 44px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.container::before,
+.container::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--border-strong);
+}
+
+.container::before {
+  top: 12px;
+  left: 12px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.container::after {
+  bottom: 12px;
+  right: 12px;
+  border-left: none;
+  border-top: none;
+}
+
+/* =========================================================
+   TÍTULOS
+   ========================================================= */
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: var(--font-grotesk);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px 18px;
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--white);
+  font-family: var(--font-grotesk);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--steel);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+}
+
+input:focus {
+  border-color: var(--white);
+  background: var(--coal);
+}
+
+/* =========================================================
+   SENHA + OLHO
+   ========================================================= */
+
+.senha-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.senha-wrapper input {
+  padding-right: 52px;
+}
+
+.olho {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--steel);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.olho:hover {
+  color: var(--white);
+  background: var(--coal);
+}
+
+.olho.ativo {
+  color: var(--white);
+}
+
+.olho svg {
+  display: block;
+}
+
+/* =========================================================
+   ERRO
+   ========================================================= */
+
+.erro {
+  display: block;
+  font-family: var(--font-grotesk);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--silver);
+  min-height: 14px;
+  padding-left: 2px;
+  margin-top: -4px;
+}
+
+.erro:not(:empty) {
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-left: 2px solid var(--white);
+  background: var(--coal);
+}
+
+/* =========================================================
+   EXTRAS (lembrar + esqueci a senha)
+   ========================================================= */
+
+.extras {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+/* ---------- checkbox "lembrar" ---------- */
+.lembrar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lembrar input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--steel);
+  border-radius: 1px;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.lembrar input[type="checkbox"]::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--white);
+  transform: scale(0);
+  transition: transform 0.15s ease;
+}
+
+.lembrar input[type="checkbox"]:checked {
+  border-color: var(--white);
+  background: var(--white);
+}
+
+.lembrar input[type="checkbox"]:checked::after {
+  background: var(--black);
+  transform: scale(1);
+}
+
+.lembrar span {
+  font-family: var(--font-grotesk);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--silver);
+  transition: color 0.2s ease;
+}
+
+.lembrar:hover span {
+  color: var(--white);
+}
+
+/* ---------- link esqueci senha ---------- */
+.esqueci {
+  font-family: var(--font-grotesk);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--steel);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.esqueci::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--white);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.esqueci:hover {
+  color: var(--white);
+}
+
+.esqueci:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* =========================================================
+   BOTÃO PRINCIPAL
+   ========================================================= */
+
+button[type="submit"] {
+  margin-top: 12px;
+  padding: 16px 24px;
+  border: 1px solid var(--white);
+  border-radius: 2px;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-grotesk);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background: transparent;
+  color: var(--white);
+  letter-spacing: 0.26em;
+}
+
+button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   LINK "NÃO TEM CONTA? CADASTRE-SE"
+   ========================================================= */
+
+.cadastro-link {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-family: var(--font-grotesk);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+.cadastro-link a {
+  color: var(--white);
+  text-decoration: none;
+  position: relative;
+  margin-left: 4px;
+  transition: color 0.2s ease;
+}
+
+.cadastro-link a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--white);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.cadastro-link a:hover {
+  color: var(--silver);
+}
+
+.cadastro-link a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 520px) {
+  body {
+    padding: 24px 14px;
+  }
+
+  .container {
+    padding: 36px 24px 32px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    font-size: 0.66rem;
+    letter-spacing: 0.24em;
+  }
+
+  .extras {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

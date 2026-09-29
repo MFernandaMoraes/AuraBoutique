@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - StyleMatch</title>
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro</h1>
+        <p class="subtitle">Encontre seu estilo</p>
+
+        <form id="cadastroForm">
+            <input type="text" name="nome" placeholder="Nome completo" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required>
+
+            <div class="senha-wrapper">
+                <input type="password" id="senha" name="senha" placeholder="Senha" minlength="6" required>
+                <button type="button" class="olho" data-target="senha" aria-label="Mostrar senha">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="senha-wrapper">
+                <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" minlength="6" required>
+                <button type="button" class="olho" data-target="confirmarSenha" aria-label="Mostrar senha">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+
+            <small id="senhaErro" class="erro"></small>
+
+            <div class="estilos">
+                <p class="label">Escolha seus estilos:</p>
+                <div class="estilos-grid">
+                    <label class="estilo">
+                        <input type="checkbox" name="estilo" value="streetwear">
+                        <span>Streetwear</span>
+                    </label>
+                    <label class="estilo">
+                        <input type="checkbox" name="estilo" value="minimalista">
+                        <span>Minimalista</span>
+                    </label>
+                    <label class="estilo">
+                        <input type="checkbox" name="estilo" value="alt">
+                        <span>Alt</span>
+                    </label>
+                    <label class="estilo">
+                        <input type="checkbox" name="estilo" value="classico">
+                        <span>Clássico</span>
+                    </label>
+                    <label class="estilo">
+                        <input type="checkbox" name="estilo" value="esportivo">
+                        <span>Esportivo</span>
+                    </label>
+                    <label class="estilo">
+                        <input type="checkbox" name="estilo" value="boho">
+                        <span>Grunge</span>
+                    </label>
+                </div>
+            </div>
+
+            <select name="estiloPrincipal" required>
+                <option value="">Estilo principal</option>
+                <option value="streetwear">Streetwear</option>
+                <option value="minimalista">Minimalista</option>
+                <option value="alt">Alt</option>
+                <option value="classico">Clássico</option>
+                <option value="esportivo">Esportivo</option>
+                <option value="boho">Grunge</option>
+            </select>
+
+            <button type="submit">Criar conta</button>
+        </form>
+
+        <!-- LINK LOGIN -->
+        <p class="login-link">
+            Já tem uma conta? <a href="login.html">Faça login</a>
+        </p>
+    </div>
+
+    <script src="js/cadastro.js"></script>
+</body>
+</html>
