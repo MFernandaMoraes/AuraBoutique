@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Boutique — Vitrine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/vitrine.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="home.html" class="brand">
+        <span class="brand-mark">◈</span>
+        <span class="brand-name">AURA<em>.</em></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#lancamentos" class="nav-link">Lançamentos</a>
+        <a href="#mais-vendidos" class="nav-link">Mais Vendidos</a>
+        <a href="#categorias" class="nav-link">Categorias</a>
+        <a href="#editorial" class="nav-link">Editorial</a>
+        <a href="#sale" class="nav-link">Sale</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Buscar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+        </button>
+        <button class="icon-btn" aria-label="Favoritos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+        <button class="icon-btn" aria-label="Carrinho">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <a href="login.html" class="btn-login">Entrar</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Fechar">✕</button>
+    <nav class="mobile-nav">
+      <a href="#lancamentos">Lançamentos</a>
+      <a href="#mais-vendidos">Mais Vendidos</a>
+      <a href="#categorias">Categorias</a>
+      <a href="#editorial">Editorial</a>
+      <a href="#sale">Sale</a>
+      <a href="login.html">Entrar</a>
+    </nav>
+  </aside>
+
+  <!-- HERO / BANNER PRINCIPAL -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-label">Coleção 2026</span>
+        <h1 class="hero-title">
+          NOVA<br>
+          <span class="hero-title-outline">ESTÉTICA</span>
+        </h1>
+        <p class="hero-desc">
+          Peças selecionadas para quem vive entre o clássico e o caos.
+          Streetwear, Alt, Clássico e Y2K em um só lugar.
+        </p>
+        <div class="hero-cta">
+          <a href="#lancamentos" class="btn btn-primary">Ver lançamentos</a>
+          <a href="#editorial" class="btn btn-ghost">Editorial</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-wrap">
+          <img src="https://i.pinimg.com/736x/b6/f9/15/b6f9153336c9c8cc788e7109fcf63eb5.jpg" alt="Look Y2K">
+        </div>
+        <div class="hero-meta">
+          <span>Drop 01 / 2026</span>
+          <span>◈ AURA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIAS -->
+  <section class="section" id="categorias">
+    <div class="section-head">
+      <h2 class="section-title">Categorias</h2>
+      <a href="#" class="section-link">Ver todas →</a>
+    </div>
+
+    <div class="cat-grid">
+      <a href="#" class="cat-card">
+        <span class="cat-index">01</span>
+        <h3 class="cat-name">STREETWEAR</h3>
+        <span class="cat-arrow">↗</span>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-index">02</span>
+        <h3 class="cat-name">CLÁSSICO</h3>
+        <span class="cat-arrow">↗</span>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-index">03</span>
+        <h3 class="cat-name">ALT</h3>
+        <span class="cat-arrow">↗</span>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-index">04</span>
+        <h3 class="cat-name">Y2K</h3>
+        <span class="cat-arrow">↗</span>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-index">05</span>
+        <h3 class="cat-name">CASACOS</h3>
+        <span class="cat-arrow">↗</span>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-index">06</span>
+        <h3 class="cat-name">ACESSÓRIOS</h3>
+        <span class="cat-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CARROSSEL: MAIS VENDIDOS -->
+  <section class="section carousel-section" id="mais-vendidos">
+    <div class="section-head">
+      <h2 class="section-title">Mais Vendidos</h2>
+      <div class="carousel-controls">
+        <button class="carousel-btn" data-carousel="vendidos" data-dir="-1" aria-label="Anterior">←</button>
+        <button class="carousel-btn" data-carousel="vendidos" data-dir="1" aria-label="Próximo">→</button>
+      </div>
+    </div>
+
+    <div class="carousel" id="carousel-vendidos">
+      <!-- preenchido via JS -->
+    </div>
+  </section>
+
+  <!-- BANNER SPLIT (promo) -->
+  <section class="banner-split">
+    <div class="banner-split-inner">
+      <div class="banner-split-text">
+        <span class="banner-label">Drop 02 — Limitado</span>
+        <h3 class="banner-title">
+          ATÉ<br><em>40% OFF</em>
+        </h3>
+        <p>Seleção especial de peças autorais com desconto por tempo limitado.</p>
+        <a href="#sale" class="btn btn-primary">Ver ofertas</a>
+      </div>
+      <div class="banner-split-image">
+        <img src="https://i.pinimg.com/1200x/12/e9/65/12e965e9151e918eadaa6e2c4122afe1.jpg" alt="Sale">
+      </div>
+    </div>
+  </section>
+
+  <!-- CARROSSEL: ÚLTIMOS LANÇAMENTOS -->
+  <section class="section carousel-section" id="lancamentos">
+    <div class="section-head">
+      <h2 class="section-title">Últimos Lançamentos</h2>
+      <div class="carousel-controls">
+        <button class="carousel-btn" data-carousel="lancamentos" data-dir="-1" aria-label="Anterior">←</button>
+        <button class="carousel-btn" data-carousel="lancamentos" data-dir="1" aria-label="Próximo">→</button>
+      </div>
+    </div>
+
+    <div class="carousel" id="carousel-lancamentos">
+      <!-- preenchido via JS -->
+    </div>
+  </section>
+
+  <!-- EDITORIAL -->
+  <section class="editorial" id="editorial">
+    <div class="editorial-inner">
+      <div class="editorial-text">
+        <span class="editorial-label">Editorial / 2026</span>
+        <h3>
+          O estilo<br>
+          é a sua <em>assinatura</em>
+        </h3>
+        <p>
+          Cada peça foi pensada para quem não segue tendência, cria a sua.
+          Uma curadoria entre o clássico e o experimental.
+        </p>
+        <a href="#" class="btn btn-ghost">Ler editorial</a>
+      </div>
+      <div class="editorial-image">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80" alt="Editorial">
+      </div>
+    </div>
+  </section>
+
+  <!-- SALE / BANNER FINAL -->
+  <section class="sale-banner" id="sale">
+    <div class="sale-inner">
+      <h3 class="sale-title">
+        SALE<br>
+        <span class="sale-outline">FINAL</span>
+      </h3>
+      <p>Peças selecionadas com até 50% de desconto. Últimas unidades.</p>
+      <a href="#" class="btn btn-primary">Aproveitar agora</a>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <h3>Entre na lista</h3>
+      <p>Receba drops, editoriais e ofertas antes de todo mundo.</p>
+      <form class="news-form" id="newsForm">
+        <input type="email" placeholder="Seu e-mail" required>
+        <button type="submit" class="btn btn-primary">Assinar</button>
+      </form>
+      <small class="news-msg" id="newsMsg"></small>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">STYLE<em>MATCH</em></span>
+        <p>Moda autoral, estética Y2K e atitude. Encontre seu estilo.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Loja</h4>
+        <a href="#">Novidades</a>
+        <a href="#">Masculino</a>
+        <a href="#">Feminino</a>
+        <a href="#">Sale</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ajuda</h4>
+        <a href="#">Trocas</a>
+        <a href="#">Frete</a>
+        <a href="#">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Pinterest</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AURA BOUTIQUE · TODOS OS DIREITOS RESERVADOS</span>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/vitrine.js"></script>
+</body>
+</html>

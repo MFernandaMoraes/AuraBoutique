@@ -14,29 +14,29 @@
       nome: 'Camiseta Streetwear Angel - Branca',
       categoria: 'Streetwear',
       preco: 159.90,
-      tag: 'NOVO',
+      tag: 'STREETWEAR',
       imagem: 'https://i.pinimg.com/736x/e1/b2/be/e1b2be31580966c5eb32a93da087519c.jpg'
     },
     {
-      nome: 'Calça Wide Leg',
-      categoria: 'Alfaiataria',
-      preco: 259.90,
-      tag: 'DROP 02',
-      imagem: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&auto=format&fit=crop&q=80'
+      nome: 'Terno Sob Medida ACE',
+      categoria: 'Clássico',
+      preco: 289.90,
+      tag: 'CLÁSSICO',
+      imagem: 'https://i.pinimg.com/736x/84/ef/5b/84ef5b8a4e3bd257a2cbdeab42c7a1a2.jpg'
     },
     {
-      nome: 'Camisa Seda',
+      nome: 'LYSMO Jaqueta Preta',
       categoria: 'Vestidos',
-      preco: 299.00,
-      tag: 'EXCLUSIVO',
-      imagem: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&auto=format&fit=crop&q=80'
+      preco: 259.00,
+      tag: 'Y2K',
+      imagem: 'https://i.pinimg.com/736x/3f/d5/b5/3fd5b51b99536039003df7f2aac7ec62.jpg'
     },
     {
-      nome: 'Trench Coat',
-      categoria: 'Casacos',
-      preco: 549.00,
-      tag: 'NOVO',
-      imagem: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&auto=format&fit=crop&q=80'
+      nome: '10YRS Tour Belt Red',
+      categoria: 'Acessórios',
+      preco: 89.00,
+      tag: 'ACESSÓRIOS',
+      imagem: 'https://i.pinimg.com/736x/b8/5c/16/b85c166da86402404fe220b154f15a71.jpg'
     }
   ];
 
@@ -131,25 +131,6 @@
   /* =========================================================
      NAVEGAÇÃO (mock)
      ========================================================= */
-
-  function handleNav(target) {
-    const mensagens = {
-      vitrine: 'Abrindo vitrine completa...',
-      produtos: 'Abrindo catálogo de produtos...',
-      colecoes: 'Abrindo coleções sazonais...',
-      estilos: 'Abrindo estilos conceituais...'
-    };
-    alert(mensagens[target] || 'Navegando...');
-  }
-
-  function initNav() {
-    $$('[data-nav]').forEach((el) => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        handleNav(el.dataset.nav);
-      });
-    });
-  }
 
   /* =========================================================
      AÇÕES DA NAVBAR
