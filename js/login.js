@@ -85,62 +85,82 @@
 
     const btnSubmit = form.querySelector('button[type="submit"]');
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      limparErro();
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        limparErro();
 
-      const email = $('#email').value.trim();
-      const senha = $('#senha').value;
-      const lembrar = $('#lembrar').checked;
+        const email = $('#email').value.trim();
+        const senha = $('#senha').value;
+        const lembrar = $('#lembrar').checked;
 
-      // E-mail vazio
-      if (!email) {
-        mostrarErro('Informe seu e-mail.');
-        $('#email').focus();
-        return;
-      }
-
-      // E-mail inválido
-      if (!validarEmail(email)) {
-        mostrarErro('E-mail inválido.');
-        $('#email').focus();
-        return;
-      }
-
-      // Senha vazia / curta
-      if (!senha) {
-        mostrarErro('Informe sua senha.');
-        $('#senha').focus();
-        return;
-      }
-
-      if (senha.length < 6) {
-        mostrarErro('Senha deve ter no mínimo 6 caracteres.');
-        $('#senha').focus();
-        return;
-      }
-
-      // Salva preferência
-      salvarLembrar(email, lembrar);
-
-      // Feedback de carregamento
-      if (btnSubmit) {
-        btnSubmit.disabled = true;
-        btnSubmit.textContent = 'ENTRANDO...';
-      }
-
-      // Simulação de autenticação (substituir por fetch real)
-      setTimeout(() => {
-        console.log('Login:', { email, lembrar });
-
-        if (btnSubmit) {
-          btnSubmit.disabled = false;
-          btnSubmit.textContent = 'ENTRAR';
+        // E-mail vazio
+        if (!email) {
+            mostrarErro('Informe seu e-mail.');
+            $('#email').focus();
+            return;
         }
 
-        alert('Login realizado com sucesso!');
-        // window.location.href = 'home.html';
-      }, 900);
+        // E-mail inválido
+        if (!validarEmail(email)) {
+            mostrarErro('E-mail inválido.');
+            $('#email').focus();
+            return;
+        }
+
+        // Senha vazia / curta
+        if (!senha) {
+            mostrarErro('Informe sua senha.');
+            $('#senha').focus();
+            return;
+        }
+
+        if (senha.length < 6) {
+            mostrarErro('Senha deve ter no mínimo 6 caracteres.');
+            $('#senha').focus();
+            return;
+        }
+
+        // Salva preferência
+        salvarLembrar(email, lembrar);
+
+        // Feedback de carregamento
+        if (btnSubmit) {
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = 'ENTRANDO...';
+        }
+
+        try {
+            const resp = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, senha })
+            });
+
+            const json = await resp.json();
+
+            if (!resp.ok) {
+                mostrarErro(json.erro || 'E-mail ou senha inválidos.');
+                if (btnSubmit) {
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = 'ENTRAR';
+                }
+                return;
+            }
+
+            // ✅ Login OK — guarda os dados do cliente
+            localStorage.setItem('cliente', JSON.stringify(json.cliente));
+
+            // Redireciona para a home
+            window.location.href = 'home.html';
+
+        } catch (err) {
+            console.error(err);
+            mostrarErro('Não foi possível conectar ao servidor.');
+            if (btnSubmit) {
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = 'ENTRAR';
+            }
+        }
     });
   }
 

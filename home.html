@@ -32,17 +32,43 @@
       </nav>
 
       <div class="nav-actions">
+
         <button class="icon-btn" id="btnSearch" aria-label="Buscar">
           <i class="fas fa-magnifying-glass"></i>
         </button>
-        <button class="icon-btn" id="btnLogin" aria-label="Entrar">
-          <i class="fas fa-user"></i>
-        </button>
+
+        <!-- 🔓 ESTADO DESLOGADO: mostra botão LOGIN -->
+        <a href="login.html" class="btn-login" id="btnLoginText">LOGIN</a>
+
+        <!-- 🔐 ESTADO LOGADO: mostra avatar + dropdown -->
+        <div class="user-menu" id="userMenu" hidden>
+          <button class="user-avatar" id="userAvatar" aria-label="Menu do usuário" aria-haspopup="true" aria-expanded="false">
+            <!-- Iniciais do nome (ex: "AM") -->
+            <span id="userInitials">?</span>
+          </button>
+
+          <div class="user-dropdown" id="userDropdown" role="menu">
+            <div class="dropdown-header">
+              <strong id="userName">Cliente</strong>
+              <small id="userEmail">email@exemplo.com</small>
+            </div>
+            <a href="perfil.html" role="menuitem">
+              <i class="fas fa-user"></i> Meu perfil
+            </a>
+            <a href="pedidos.html" role="menuitem">
+              <i class="fas fa-box"></i> Meus pedidos
+            </a>
+            <a href="#" role="menuitem" id="btnLogout">
+              <i class="fas fa-right-from-bracket"></i> Sair
+            </a>
+          </div>
+        </div>
+
         <button class="icon-btn cart-btn" id="btnCart" aria-label="Sacola">
           <i class="fas fa-bag-shopping"></i>
           <span class="cart-count" id="cartCount">0</span>
         </button>
-        <a href="login.html" class="btn-login" id="btnLoginText">LOGIN</a>
+
       </div>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">

@@ -19,7 +19,7 @@ document.querySelectorAll('.olho').forEach(btn => {
 });
 
 // Submit
-document.getElementById('cadastroForm').addEventListener('submit', function(e) {
+document.getElementById('cadastroForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const senha = document.getElementById('senha').value;
@@ -32,9 +32,44 @@ document.getElementById('cadastroForm').addEventListener('submit', function(e) {
     }
     erro.textContent = '';
 
-    const estilos = document.querySelectorAll('input[name="estilo"]:checked');
-    if (!estilos.length) return alert('Escolha pelo menos um estilo!');
+    const estilos = [...document.querySelectorAll('input[name="estilo"]:checked')]
+        .map(c => c.value);
 
-    console.log(Object.fromEntries(new FormData(this)));
-    alert('Cadastro realizado!');
+    if (!estilos.length) {
+        alert('Escolha pelo menos um estilo!');
+        return;
+    }
+
+    const dados = Object.fromEntries(new FormData(this));
+    dados.estilos = estilos;
+
+    const btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Cadastrando...';
+
+    try {
+        const resp = await fetch('http://localhost:3000/cadastro', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dados)
+        });
+
+        const json = await resp.json();
+
+        if (!resp.ok) {
+            erro.textContent = json.erro || 'Erro ao cadastrar.';
+            btn.disabled = false;
+            btn.textContent = 'Criar conta';
+            return;
+        }
+
+        alert('Cadastro realizado! Faça login.');
+        window.location.href = 'login.html';
+
+    } catch (err) {
+        console.error(err);
+        erro.textContent = 'Não foi possível conectar ao servidor.';
+        btn.disabled = false;
+        btn.textContent = 'Criar conta';
+    }
 });

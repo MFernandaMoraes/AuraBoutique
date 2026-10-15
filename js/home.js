@@ -257,3 +257,73 @@
 
   document.addEventListener('DOMContentLoaded', init);
 })();
+
+/* =========================================================
+   NAVBAR: alterna estado logado / deslogado
+   ========================================================= */
+(function initNavbarAuth() {
+  const cliente = JSON.parse(localStorage.getItem('cliente') || 'null');
+
+  const btnLoginText = document.getElementById('btnLoginText');
+  const userMenu     = document.getElementById('userMenu');
+  const userInitials = document.getElementById('userInitials');
+  const userName     = document.getElementById('userName');
+  const userEmail    = document.getElementById('userEmail');
+  const userAvatar   = document.getElementById('userAvatar');
+  const userDropdown = document.getElementById('userDropdown');
+  const btnLogout    = document.getElementById('btnLogout');
+
+  // ---------- DESLOGADO ----------
+  if (!cliente) {
+    if (btnLoginText) btnLoginText.hidden = false;
+    if (userMenu)     userMenu.hidden = true;
+    return;
+  }
+
+  // ---------- LOGADO ----------
+  // Esconde botão LOGIN, mostra avatar
+  if (btnLoginText) btnLoginText.hidden = true;
+  if (userMenu)     userMenu.hidden = false;
+
+  // Preenche iniciais (ex: "Ana Maria" → "AM")
+  const iniciais = cliente.nome
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map(p => p[0]?.toUpperCase() || '')
+    .join('');
+  if (userInitials) userInitials.textContent = iniciais || '?';
+
+  if (userName)  userName.textContent  = cliente.nome;
+  if (userEmail) userEmail.textContent = cliente.email;
+
+  // ---------- ABRE / FECHA DROPDOWN ----------
+  userAvatar?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const aberto = userMenu.classList.toggle('open');
+    userAvatar.setAttribute('aria-expanded', aberto);
+  });
+
+  // Fecha ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (!userMenu.contains(e.target)) {
+      userMenu.classList.remove('open');
+      userAvatar.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Fecha com ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      userMenu.classList.remove('open');
+      userAvatar.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // ---------- LOGOUT ----------
+  btnLogout?.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.removeItem('cliente');
+    window.location.href = 'login.html';
+  });
+})();
