@@ -149,9 +149,8 @@
 
             // ✅ Login OK — guarda os dados do cliente
             localStorage.setItem('cliente', JSON.stringify(json.cliente));
-
-            // Redireciona para a home
-            window.location.href = 'home.html';
+            
+            window.location.href = json.cliente.is_admin ? 'admin.html' : 'home.html';
 
         } catch (err) {
             console.error(err);

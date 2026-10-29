@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Admin · Aura Boutique</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="page-admin">
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="admin.html" class="brand">
+        <span class="brand-mark">◈</span>
+        <span class="brand-name">AURA<em>.</em> <span class="admin-tag">ADMIN</span></span>
+      </a>
+      <nav class="nav-menu">
+        <a href="admin.html" class="nav-link is-active">Dashboard</a>
+        <a href="gestao-colecoes.html" class="nav-link">Coleções & Estilos</a>
+        <a href="#" class="nav-link">Produtos</a>
+        <a href="#" class="nav-link">Pedidos</a>
+        <a href="#" class="nav-link">Clientes</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="user-menu" id="userMenu">
+          <button class="user-avatar" id="userAvatar" aria-label="Menu"><span id="userInitials">A</span></button>
+          <div class="user-dropdown">
+            <div class="dropdown-header">
+              <strong id="userName">Admin</strong>
+              <small id="userEmail">admin@aura.com</small>
+            </div>
+            <a href="home.html"><i class="fas fa-store"></i> Ver loja</a>
+            <a href="gestao-colecoes.html"><i class="fas fa-layer-group"></i> Gestão</a>
+            <a href="#" id="btnLogout"><i class="fas fa-right-from-bracket"></i> Sair</a>
+          </div>
+        </div>
+        <button class="menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="admin-hero">
+    <div class="admin-hero-inner">
+      <div>
+        <span class="hero-label">PAINEL ADMINISTRATIVO</span>
+        <h1 class="admin-title">BEM-VINDO,<br><span class="hero-title-outline" id="adminName">ADMIN</span></h1>
+        <p class="admin-sub">Gerencie coleções, diretrizes estéticas, produtos e pedidos da Aura Boutique.</p>
+      </div>
+      <div class="admin-hero-meta">
+        <div><span>COLEÇÕES ATIVAS</span><strong id="statColecoesAtivas">0</strong></div>
+        <div><span>ESTILOS</span><strong id="statEstilos">0</strong></div>
+        <div><span>PRODUTOS</span><strong id="statProdutos">0</strong></div>
+        <div><span>PEDIDOS</span><strong id="statPedidos">0</strong></div>
+      </div>
+    </div>
+  </section>
+
+    <section class="admin-main">
+
+    <!-- =====================================================
+         RF02 · COLEÇÕES
+         ===================================================== -->
+    <div class="section-head">
+      <h2 class="section-title">COLEÇÕES SAZONAIS</h2>
+      <span class="pill-count" id="countColecoes">0 cadastradas</span>
+    </div>
+
+    <div class="rf02-grid">
+
+      <!-- FORM -->
+      <aside class="rf02-form-card">
+        <div class="rf02-form-head">
+          <h3>Nova coleção</h3>
+          <span class="pill">CADASTRO</span>
+        </div>
+
+        <form id="formColecao" class="rf02-form">
+          <div class="rf02-row">
+            <label>Nome da coleção *</label>
+            <input type="text" name="nome" required placeholder="Ex: Primavera 2026">
+          </div>
+
+          <div class="rf02-row">
+            <label>Temporada *</label>
+            <select name="temporada" required>
+              <option value="">Selecione…</option>
+              <option>Primavera/Verão 2026</option>
+              <option>Outono/Inverno 2026</option>
+              <option>Primavera/Verão 2027</option>
+              <option>Outono/Inverno 2027</option>
+              <option>Resort 2026</option>
+            </select>
+          </div>
+
+          <div class="rf02-row-2">
+            <div>
+              <label>Início *</label>
+              <input type="date" name="data_inicio" required>
+            </div>
+            <div>
+              <label>Fim *</label>
+              <input type="date" name="data_fim" required>
+            </div>
+          </div>
+
+          <div class="rf02-row">
+            <label>Status</label>
+            <select name="status">
+              <option>Em preparação</option>
+              <option>Em andamento</option>
+              <option>Concluída</option>
+            </select>
+          </div>
+
+          <div class="rf02-row">
+            <label>Descrição</label>
+            <textarea name="descricao" rows="2" placeholder="Conceito da coleção…"></textarea>
+          </div>
+
+          <div class="rf02-row">
+            <label>Herdar diretrizes de</label>
+            <select name="herdou_de">
+              <option value="">Nenhuma</option>
+              <!-- Populado via JS com coleções anteriores -->
+            </select>
+          </div>
+
+          <div class="rf02-actions">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-plus"></i> Criar
+            </button>
+            <button type="reset" class="btn btn-ghost">Limpar</button>
+          </div>
+        </form>
+      </aside>
+
+      <!-- LISTA -->
+      <div class="rf02-list">
+        <div class="collection-grid" id="gridColecoes">
+          <!-- Preenchido via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+         RF02 · ESTILOS / DIRETRIZES
+         ===================================================== -->
+    <div class="section-head section-head-mt">
+      <h2 class="section-title">DIRETRIZES ESTÉTICAS</h2>
+      <span class="pill-count" id="countEstilos">0 cadastradas</span>
+    </div>
+
+    <div class="rf02-grid">
+
+      <!-- FORM -->
+      <aside class="rf02-form-card">
+        <div class="rf02-form-head">
+          <h3>Novo estilo</h3>
+          <span class="pill">DIRETRIZ</span>
+        </div>
+
+        <form id="formEstilo" class="rf02-form">
+          <div class="rf02-row">
+            <label>Nome do estilo *</label>
+            <input type="text" name="nome" required placeholder="Ex: Minimal Alfaiataria">
+          </div>
+
+          <div class="rf02-row">
+            <label>Coleção vinculada *</label>
+            <select name="id_colecao" id="selColecaoEstilo" required>
+              <option value="">Selecione…</option>
+            </select>
+          </div>
+
+          <div class="rf02-row">
+            <label>Paleta de cores</label>
+            <div class="color-picker-row">
+              <input type="color" id="corPicker" value="#ffffff">
+              <button type="button" class="btn btn-ghost btn-sm" id="btnAddCor">
+                <i class="fas fa-plus"></i> Adicionar
+              </button>
+            </div>
+            <div class="color-swatches" id="colorSwatches"></div>
+          </div>
+
+          <div class="rf02-row">
+            <label>Silhueta / versão</label>
+            <input type="text" name="silhueta" placeholder="Ex: ampla, reta, oversized">
+          </div>
+
+          <div class="rf02-row">
+            <label>Tecido</label>
+            <input type="text" name="tecido" placeholder="Ex: linho, algodão pesado">
+          </div>
+
+          <div class="rf02-row">
+            <label>Palavras-chave</label>
+            <input type="text" name="palavras_chave" placeholder="Ex: minimal, monocromático, atemporal">
+          </div>
+
+          <div class="rf02-row">
+            <label>Mood board (URL)</label>
+            <input type="url" name="mood_url" placeholder="https://…">
+          </div>
+
+          <div class="rf02-row">
+            <label class="check-line">
+              <input type="checkbox" name="herda" checked>
+              <span>Herdar diretrizes da coleção</span>
+            </label>
+          </div>
+
+          <div class="rf02-actions">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-plus"></i> Criar
+            </button>
+            <button type="reset" class="btn btn-ghost">Limpar</button>
+          </div>
+        </form>
+      </aside>
+
+      <!-- LISTA -->
+      <div class="rf02-list">
+        <div class="style-grid" id="gridEstilos">
+          <!-- Preenchido via JS -->
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <span>© 2026 AURA BOUTIQUE · PAINEL ADMIN</span>
+      <span>RF02 · GESTÃO</span>
+    </div>
+  </footer>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
