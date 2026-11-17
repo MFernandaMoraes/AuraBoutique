@@ -107,17 +107,13 @@ function renderColecoes(lista) {
     card.querySelector('.btn-arquivar').addEventListener('click', async () => {
       const atual = colecoesCache.find(c => c.id_colecao == id);
       const novo = atual?.status === 'Arquivada' ? 'Em preparação' : 'Arquivada';
-      await fetch(`${API}/colecoes/${id}/status`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: novo })
-      });
+      await axios.patch(`${API}/colecoes/${id}/status`, { status: novo });
       carregarColecoes();
     });
 
     card.querySelector('.btn-remover').addEventListener('click', async () => {
       if (!confirm('Remover esta coleção? Os estilos vinculados também serão apagados.')) return;
-      await fetch(`${API}/colecoes/${id}`, { method: 'DELETE' });
+      await axios.delete(`${API}/colecoes/${id}`);
       carregarColecoes();
       carregarEstilos();
     });
@@ -161,7 +157,7 @@ function renderEstilos(lista) {
   $$('.style-card', grid).forEach(card => {
     card.querySelector('.btn-remover-estilo').addEventListener('click', async () => {
       if (!confirm('Remover este estilo?')) return;
-      await fetch(`${API}/estilos-diretriz/${card.dataset.id}`, { method: 'DELETE' });
+      await axios.delete(`${API}/estilos-diretriz/${card.dataset.id}`);
       carregarEstilos();
     });
   });
@@ -170,8 +166,8 @@ function renderEstilos(lista) {
 /* ---------- CARREGAR ---------- */
 async function carregarColecoes() {
   try {
-    const r = await fetch(`${API}/colecoes`);
-    const lista = await r.json();
+    const response = await axios.get(`${API}/colecoes`);
+    const lista = response.data;
     colecoesCache = lista;
     renderColecoes(lista);
     $('#countColecoes').textContent = `${lista.length} cadastrada(s)`;
@@ -199,8 +195,8 @@ async function carregarColecoes() {
 
 async function carregarEstilos() {
   try {
-    const r = await fetch(`${API}/estilos-diretriz`);
-    const lista = await r.json();
+    const response = await axios.get(`${API}/estilos-diretriz`);
+    const lista = response.data;
     renderEstilos(lista);
     $('#countEstilos').textContent = `${lista.length} cadastrada(s)`;
 
@@ -244,21 +240,12 @@ if (formColecao) {
     const payload = Object.fromEntries(fd.entries());
 
     try {
-      const r = await fetch(`${API}/colecoes`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (!r.ok) {
-        const j = await r.json();
-        alert(j.erro || 'Erro ao criar coleção.');
-        return;
-      }
+      await axios.post(`${API}/colecoes`, payload);
       formColecao.reset();
       carregarColecoes();
     } catch (err) {
       console.error(err);
-      alert('Não foi possível conectar ao servidor.');
+      alert(err.response?.data?.erro || 'Erro ao criar coleção.');
     }
   });
 }
@@ -279,23 +266,14 @@ if (formEstilo) {
     }
 
     try {
-      const r = await fetch(`${API}/estilos-diretriz`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (!r.ok) {
-        const j = await r.json();
-        alert(j.erro || 'Erro ao criar estilo.');
-        return;
-      }
+      await axios.post(`${API}/estilos-diretriz`, payload);
       formEstilo.reset();
       paletaTemp = [];
       renderSwatches();
       carregarEstilos();
     } catch (err) {
       console.error(err);
-      alert('Não foi possível conectar ao servidor.');
+      alert(err.response?.data?.erro || 'Erro ao criar estilo.');
     }
   });
 }
